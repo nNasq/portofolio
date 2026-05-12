@@ -7,6 +7,7 @@ import webshit from "../assets/webshit.png";
 import barber from "../assets/barber.png";
 import atapu from "../assets/atapu.png";
 import asset from "../assets/asset.png";
+import folder from "../assets/folder.png";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -252,7 +253,14 @@ export default function Portfolio() {
       {/* Header */}
       <header className="pf-header">
         <div className="pf-header-inner">
-          <FolderSVG color="blue" size={38} />
+          {/* Menggunakan gambar folder yang sudah di-import */}
+          <Image 
+            src={folder} 
+            alt="Folder Icon" 
+            width={38} 
+            height={38} 
+            style={{ objectFit: "contain" }} 
+          />
           <span className="pf-header-title">Portofolio</span>
         </div>
       </header>
