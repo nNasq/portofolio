@@ -173,6 +173,131 @@ const HoverCard = ({
   );
 };
 
+/* ── Selected Text Highlight on "Work" ── */
+const SelectedWord = ({ word }: { word: string }) => (
+  <span style={{ position: "relative", display: "inline-block" }}>
+    {/* Popup Copy | Paste */}
+    <span
+      style={{
+        position: "absolute",
+        top: -52,
+        left: "50%",
+        transform: "translateX(-50%)",
+        display: "flex",
+        borderRadius: 10,
+        overflow: "hidden",
+        background: "#1f1f1f",
+        boxShadow: "0 4px 16px rgba(0,0,0,0.22)",
+        whiteSpace: "nowrap",
+        zIndex: 10,
+        pointerEvents: "none",
+      }}
+    >
+      <span
+        style={{
+          padding: "9px 20px",
+          fontSize: 14,
+          fontWeight: 500,
+          color: "#fff",
+          fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif",
+          borderRight: "1px solid rgba(255,255,255,0.15)",
+        }}
+      >
+        Copy
+      </span>
+      <span
+        style={{
+          padding: "9px 20px",
+          fontSize: 14,
+          fontWeight: 500,
+          color: "#fff",
+          fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif",
+        }}
+      >
+        Paste
+      </span>
+      {/* Arrow */}
+      <span
+        style={{
+          position: "absolute",
+          bottom: -7,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 0,
+          height: 0,
+          borderLeft: "8px solid transparent",
+          borderRight: "8px solid transparent",
+          borderTop: "8px solid #1f1f1f",
+        }}
+      />
+    </span>
+
+    {/* Highlighted word */}
+    <span
+      style={{
+        background: "#b8d4f8",
+        color: "#0a0a0a",
+        borderRadius: 4,
+        padding: "0 3px",
+        position: "relative",
+        display: "inline-block",
+      }}
+    >
+      {word}
+
+      {/* Left handle dot */}
+      <span
+        style={{
+          width: 11,
+          height: 11,
+          background: "#2563eb",
+          borderRadius: "50%",
+          position: "absolute",
+          bottom: -6,
+          left: -3,
+          display: "block",
+        }}
+      />
+
+      {/* Right handle dot */}
+      <span
+        style={{
+          width: 11,
+          height: 11,
+          background: "#2563eb",
+          borderRadius: "50%",
+          position: "absolute",
+          bottom: -6,
+          right: -3,
+          display: "block",
+        }}
+      />
+
+      {/* Blinking cursor */}
+      <span
+        style={{
+          position: "absolute",
+          bottom: 2,
+          right: 0,
+          width: 2,
+          height: "75%",
+          background: "#2563eb",
+          display: "block",
+          animation: "lwt-blink 1.1s step-end infinite",
+        }}
+      />
+    </span>
+
+    {/* Keyframes injected once via a style tag */}
+    <style>{`
+      @keyframes lwt-blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+      }
+    `}</style>
+  </span>
+);
+
 export default function LetsWorkTogether() {
   return (
     <section
@@ -216,14 +341,17 @@ export default function LetsWorkTogether() {
               fontSize: "clamp(2.6rem, 5vw, 4rem)",
               fontWeight: 800,
               color: "#0a0a0a",
-              lineHeight: 1.05,
+              lineHeight: 1.1,
               letterSpacing: "-0.02em",
               marginTop: 62,
               textAlign: "center",
             }}
           >
-            Let's Work
-            <br />
+            {/* "Let's " + selected "Work" on the same line */}
+            <span style={{ display: "block" }}>
+              Let&apos;s{" "}
+              <SelectedWord word="Work" />
+            </span>
             Together
           </h2>
 
@@ -260,9 +388,7 @@ export default function LetsWorkTogether() {
                 alt="Arrow"
                 width={60}
                 height={60}
-                style={{
-                  objectFit: "contain",
-                }}
+                style={{ objectFit: "contain" }}
               />
             </div>
 
