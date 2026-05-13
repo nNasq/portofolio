@@ -7,7 +7,7 @@ import webshit from "../assets/webshit.png";
 import barber from "../assets/barber.png";
 import atapu from "../assets/atapu.png";
 import asset from "../assets/asset.png";
-import folder from "../assets/folder.png";
+import folder from "../assets/porto.png";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
