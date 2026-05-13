@@ -63,7 +63,7 @@ const items: FolderItem[] = [
   },
   {
     id: 5,
-    label: "School",
+    label: "School ",
     color: "purple",
     image: sipatuh,
     description:
