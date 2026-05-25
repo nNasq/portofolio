@@ -154,14 +154,14 @@ const AirDropModal = ({
     <div className="ad-sheet" onClick={(e) => e.stopPropagation()}>
       <div className="ad-header">
         <p className="ad-title">AirDrop</p>
-        <p className="ad-subtitle">POLLEN FABRICS aimerait partager une photo.</p>
+        <p className="ad-subtitle">Tak kenal, maka tak sayang. Hi sayang, aku Nanas ingin membagikan sesuatu melalui AirDrop</p>
       </div>
       <div className="ad-photo">
         <Image src={me} alt="Nanas" fill style={{ objectFit: "cover", display: "block" }} />
       </div>
       <div className="ad-actions">
-        <button className="ad-btn ad-btn--decline" onClick={onDecline}>Refuser</button>
-        <button className="ad-btn ad-btn--accept" onClick={onAccept}>Accepter</button>
+        <button className="ad-btn ad-btn--decline" onClick={onDecline}>Reject</button>
+        <button className="ad-btn ad-btn--accept" onClick={onAccept}>Accept</button>
       </div>
     </div>
   </div>
