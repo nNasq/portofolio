@@ -75,37 +75,38 @@ const WebDevIcon = () => (
   </svg>
 );
 
+// MENGUBAH px MENJADI % AGAR POSISI FLUID & RESPONSIF DI DESKTOP
 const pills: Pill[] = [
   {
     label: "Mobile Dev",
     className: "mobile",
     rotate: "-12deg",
-    top: "80px",
-    left: "40px",
+    top: "15%",
+    left: "5%",
     icon: <MobileIcon />,
   },
   {
     label: "Interfaces",
     className: "interfaces",
     rotate: "-2deg",
-    top: "110px",
-    left: "760px",
+    top: "20%",
+    left: "55%",
     icon: <InterfacesIcon />,
   },
   {
     label: "Animation",
     className: "animation",
     rotate: "6deg",
-    top: "360px",
-    left: "350px",
+    top: "55%",
+    left: "20%",
     icon: <AnimationIcon />,
   },
   {
     label: "Web Dev",
     className: "webdev",
     rotate: "-16deg",
-    top: "360px",
-    left: "1180px",
+    top: "60%",
+    left: "65%",
     icon: <WebDevIcon />,
   },
 ];
@@ -117,52 +118,55 @@ const SkillPills = () => {
         .skills-wrapper {
           width: 100%;
           overflow: hidden;
+          padding: 40px 0; /* Memberikan ruang napas atas/bawah */
         }
-        .skill-svg {
-          width: 60px;
-          height: 60px;
-          flex-shrink: 0;
+        
+        /* KONTANER DENGAN MAX-WIDTH & CENTER */
+        .skills-scene {
+          position: relative;
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
         }
-        @media (min-width: 1400px) {
+
+        .skill-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* -------------------------- */
+        /* MODE DESKTOP (> 1024px)    */
+        /* -------------------------- */
+        @media (min-width: 1024px) {
           .skills-scene {
-            position: relative;
-            width: 100%;
             min-height: 560px;
           }
           .skill-pill {
             position: absolute;
             transform: rotate(var(--rotate));
+            /* Opsional: menambah animasi saat layar di-resize */
+            transition: top 0.3s ease, left 0.3s ease;
           }
           .skill-svg {
             width: 60px;
             height: 60px;
+            flex-shrink: 0;
           }
         }
-        @media (min-width: 1024px) and (max-width: 1399px) {
-          .skills-scene {
-            position: relative;
-            width: 1400px;
-            min-height: 560px;
-            transform-origin: top left;
-            transform: scale(calc(100vw / 1400));
-            margin-bottom: calc((560px * (100vw / 1400)) - 560px);
-          }
-          .skill-pill {
-            position: absolute;
-            transform: rotate(var(--rotate));
-          }
-        }
-        @media (min-width: 600px) and (max-width: 1023px) {
+
+        /* -------------------------- */
+        /* TABLET & MOBILE (< 1024px) */
+        /* -------------------------- */
+        @media (max-width: 1023px) {
           .skills-scene {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 24px;
-            padding: 32px 24px;
+            padding: 0 24px;
           }
           .skill-pill {
             position: static !important;
-            top: auto !important;
-            left: auto !important;
             transform: rotate(var(--rotate)) !important;
             width: 100%;
             box-sizing: border-box;
@@ -170,52 +174,32 @@ const SkillPills = () => {
           .skill-svg {
             width: 40px;
             height: 40px;
+            flex-shrink: 0;
           }
         }
-        @media (min-width: 400px) and (max-width: 599px) {
+
+        /* -------------------------- */
+        /* LAYAR KECIL HP (< 600px)   */
+        /* -------------------------- */
+        @media (max-width: 599px) {
           .skills-scene {
-            display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
-            padding: 20px 16px;
-          }
-          .skill-pill {
-            position: static !important;
-            top: auto !important;
-            left: auto !important;
-            transform: rotate(var(--rotate)) !important;
-            width: 100%;
-            box-sizing: border-box;
-          }
-          .skill-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 0 16px;
           }
           .skill-svg {
             width: 32px;
             height: 32px;
           }
         }
+
+        /* -------------------------- */
+        /* LAYAR SANGAT KECIL (<400px)*/
+        /* -------------------------- */
         @media (max-width: 399px) {
           .skills-scene {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 12px;
-            padding: 16px 12px;
-          }
-          .skill-pill {
-            position: static !important;
-            top: auto !important;
-            left: auto !important;
-            transform: rotate(var(--rotate)) !important;
-            width: 100%;
-            box-sizing: border-box;
-          }
-          .skill-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 0 12px;
           }
           .skill-svg {
             width: 26px;
